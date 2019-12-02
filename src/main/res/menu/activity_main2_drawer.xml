@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="الرئيسية" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="الاعدادات" />
+        <item
+            android:id="@+id/about_us"
+            android:icon="@drawable/ic_about_black_24dp"
+            android:title="نبذة عنا" />
+        <item
+            android:id="@+id/chat"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="ابلغنا عن خطأ" />
+
+        <item
+            android:id="@+id/log"
+            android:icon="@drawable/ic_vpn_key_black_24dp"
+            android:title="تسجيل الدخول" />
+    </group>
+
+</menu>

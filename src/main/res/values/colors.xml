@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#E91E63</color>
+    <color name="primary_dark">#C2185B</color>
+    <color name="primary_light">#F8BBD0</color>
+    <color name="accent">#696767</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+
+
+    <color name="nav_view_icon_color">#AFAFAF</color>
+    <color name="white">#ffffff</color>
+
+
+
+
+    <!-- intro activity -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_light_screen1">#f98da5</color>
+
+    <!-- rating bar-->
+    <color name="duskYellow">#FFEB3B</color>
+    <color name="lightGrey">#AFAFAF</color>
+    </resources>

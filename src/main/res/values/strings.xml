@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">عاوز اشتري</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    //nav menu
+    <string name="menu_home">الرئيسية</string>
+    <string name="menu_settings">اعدادات</string>
+    <string name="menu_AboutUs">معلومات عنا</string>
+    <string name="menu_chat">شكوي</string>
+    <string name="menu_logIn">تسجيل الدخول</string>
+    <string name="menu_regiser">تسجيل جديد</string>
+
+    //intro
+    <string name="next">التالي</string>
+    <string name="skip">تخطي</string>
+    <string name="start">حسنا</string>
+
+    //tool bar titles
+    <string name="main_fragment">روايتي</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_add_to_call_list">اضف الي قائمة التواصل</string>
+    <string name="button_contact">تواصل مع البائع مباشرة</string>
+
+
+</resources>

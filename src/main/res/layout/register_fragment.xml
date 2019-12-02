@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.nav.auth.forgetpassword.ForgetPasswordFragment"
+    android:background="@drawable/bg">
+
+
+<ImageView
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_weight=".2"
+        android:src="@drawable/img_bg" />
+
+    <TextView
+        android:textColor="@color/primary"
+        android:textSize="20sp"
+        android:layout_margin="16dp"
+        android:text="تسجيل جديد !"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="لا تفوت فرصة ان يكون لديك حساب يمكنك متابعة عملية الشاء والاشعارات والتواصل مع البائع" />
+
+
+    <EditText
+        android:id="@+id/name"
+        style="@style/EditextWide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="الاسم"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/EditextWide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:hint="البريد الالكتروني"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/EditextWide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:hint="كلمة المرور"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/re_password"
+        style="@style/EditextWide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:hint="اعد كتابة كلمة المرور"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/location"
+        style="@style/EditextWide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:hint="منين في مصر ؟"
+        android:padding="8dp" />
+
+    <Button
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/primary"
+        style="@style/buttonWide"
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="كما يمكنك ايضا تسجيل الدخول من خلال" />
+
+
+        <ImageButton
+            android:layout_marginBottom="16dp"
+            style="@style/buttonWide"
+            android:background="#3a559f"
+            android:scaleType="center"
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:src="@drawable/face"
+            />
+
+</LinearLayout>
