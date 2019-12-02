@@ -1,4 +1,4 @@
-package com.atp.rewayti.ui.nav.home;
+package com.atp.rewayti.ui.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,15 +14,22 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import com.atp.rewayti.API.ApiManager;
+import com.atp.rewayti.API.model.Deal;
+import com.atp.rewayti.API.model.Deals;
 import com.atp.rewayti.R;
 import com.atp.rewayti.API.Item;
 import com.atp.rewayti.ui.base.BaseFragment;
-import com.atp.rewayti.ui.result.ResultFrahmentFragment;
+import com.atp.rewayti.ui.bookDeails.BookDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +58,34 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
             }
         });
 
+        getDeals( "رعب");
+        getDeals( "حب");
+//        getDeals( "رعب");
 
 
         return view;
+    }
+
+    private void getDeals( String tag) {
+        Call<Deals> call =  ApiManager.getAPIs().getDeals("getnovelbytag" , tag);
+
+        call.enqueue(new Callback<Deals>() {
+            @Override
+            public void onResponse(Call<Deals> call, Response<Deals> response) {
+                try {
+                    Log.d(TAG, "onResponse: " + response.body().getDeals().size());
+                            addRecylerView(tag , response.body().getDeals());
+
+                } catch (Exception e) {
+                    Log.d(TAG, "onResponse: "+e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Deals> call, Throwable t) {
+                Log.d(TAG, "onFailure: "+t.getMessage());
+            }
+        });
     }
 
     @Override
@@ -63,11 +95,11 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
         ButterKnife.bind(this , view);
 //        initLoading();
         initRecyclerView();
-        addRecylerView("ادوات منزلية" , itemList);
-        addRecylerView("اجهزة كهربائية" , itemList);
-        addRecylerView("مكياج وميك أب" , itemList);
-        addRecylerView("ادوات منزلية" , itemList);
-        addRecylerView("اجهزة كهربائية" , itemList);
+//        addRecylerView("ادوات منزلية" , itemList);
+//        addRecylerView("اجهزة كهربائية" , itemList);
+//        addRecylerView("مكياج وميك أب" , itemList);
+//        addRecylerView("ادوات منزلية" , itemList);
+//        addRecylerView("اجهزة كهربائية" , itemList);
 
         result = new ArrayList<View>();
 
@@ -84,12 +116,10 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
         }
     }
 
-    private void anmateView(View view) {
-        
-    }
+    private void anmateView(View view) { }
 
 
-    private void addRecylerView(String title, List<Item> list) {
+    private void addRecylerView(String title, List<Deal> list) {
         //title
         TextView titleTextView = new TextView(getActivity());
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -109,8 +139,9 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL , false));
-        recyclerView.setAdapter(new ItemAdapter(getActivity() , list  , this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL , false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity() , 2, RecyclerView.HORIZONTAL , false ));
+         recyclerView.setAdapter(new ItemAdapter(getActivity() , list  , this));
         myLayout.addView(recyclerView);
 
     }
@@ -141,8 +172,8 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
     }
 
     @Override
-    public void onProductItemClicked(Item item) {
+    public void onProductItemClicked(Deal item) {
         Log.d(TAG, "onProductItemClicked: ");
-        loadFragment(ResultFrahmentFragment.newInstance("نتائج البحث"));
+        loadFragment(BookDetailsFragment.newInstance("نتائج البحث"));
     }
 }

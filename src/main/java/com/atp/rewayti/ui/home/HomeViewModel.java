@@ -1,4 +1,4 @@
-package com.atp.rewayti.ui.nav.home;
+package com.atp.rewayti.ui.home;
 
 import android.os.Handler;
 

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.result.ResultFrahmentFragment">
+    tools:context=".ui.bookDeails.BookDetailsFragment"
+    android:background="@drawable/bg">
 
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toTopOf="parent"
@@ -15,44 +16,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/bg"
-        android:id="@+id/loading_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:text="تفعيل ال GPS"
-            android:id="@+id/button"
-            style="@style/buttonWide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:background="@color/primary"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-
-        <ImageView
-            android:id="@+id/loading"
-            android:padding="32dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/load1"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
-            />
-
-        <ImageView
-
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/searching"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@ public class ApiManager {
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
            retrofitInstance = new Retrofit.Builder()
-                    .baseUrl("http://jam-bee.com/")
+                    .baseUrl("http://mahataelkotob.atpnet.net/")
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

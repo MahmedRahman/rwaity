@@ -17,13 +17,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.atp.rewayti.API.ApiManager;
+import com.atp.rewayti.API.model.Deals;
 import com.atp.rewayti.ui.base.BaseFragment;
 import com.atp.rewayti.ui.nav.aboutUs.AboutUsFragment;
 import com.atp.rewayti.ui.nav.auth.forgetpassword.ForgetPasswordFragment;
 import com.atp.rewayti.ui.nav.auth.logIn.LogInFragment;
 import com.atp.rewayti.ui.nav.auth.regiser.RegisterFragment;
 import com.atp.rewayti.ui.nav.chat.ChatFagment;
-import com.atp.rewayti.ui.nav.home.HomeFragment;
+import com.atp.rewayti.ui.home.HomeFragment;
 import com.atp.rewayti.ui.nav.settings.SettingsFragment;
 import com.atp.rewayti.util.Constants;
 import com.google.android.material.appbar.AppBarLayout;
@@ -69,23 +70,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     }
 
     private void test() {
-        Call<ResponseBody> call =  ApiManager.getAPIs().getCategories(1);
 
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    Log.d(TAG, "onResponse: " + response.message());
-                } catch (Exception e) {
-                    Log.d(TAG, "onResponse: "+e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+t.getMessage());
-            }
-        });
 
     }
 
@@ -142,11 +127,11 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
             return;
         }
 
-
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations( R.anim.pull_in_right , R.anim.push_out_left
                 , R.anim.pull_in_left , R.anim.push_out_right );
-        fragmentTransaction.replace(R.id.nav_host_fragment , fragment);
+
+        fragmentTransaction.add(R.id.nav_host_fragment , fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
