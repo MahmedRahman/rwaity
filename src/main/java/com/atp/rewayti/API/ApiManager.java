@@ -1,5 +1,6 @@
 package com.atp.rewayti.API;
 
+import com.atp.rewayti.util.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,7 +26,7 @@ public class ApiManager {
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
            retrofitInstance = new Retrofit.Builder()
-                    .baseUrl("http://mahataelkotob.atpnet.net/")
+                    .baseUrl(Constants.Base_Url)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

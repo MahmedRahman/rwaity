@@ -19,7 +19,7 @@
 
         </activity>
         <activity
-            android:name="com.atp.rewayti.Main2Activity"
+            android:name="com.atp.rewayti.Base.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme">
             <intent-filter>

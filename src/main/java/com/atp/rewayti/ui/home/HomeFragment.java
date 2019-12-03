@@ -15,48 +15,29 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import com.atp.rewayti.API.ApiManager;
 import com.atp.rewayti.API.model.Deal;
 import com.atp.rewayti.API.model.Deals;
 import com.atp.rewayti.R;
-import com.atp.rewayti.API.Item;
-import com.atp.rewayti.ui.base.BaseFragment;
+import com.atp.rewayti.Base.BaseFragment;
 import com.atp.rewayti.ui.bookDeails.BookDetailsFragment;
-
-import java.util.ArrayList;
+import com.atp.rewayti.util.Constants;
 import java.util.List;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
-public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductItemClicked {
+public class HomeFragment extends BaseFragment implements BookAdapter.OnProductItemClicked {
     private static final String TAG = "HomeFragment";
-    private HomeViewModel homeViewModel;
-    List<Item> itemList;
 
-    ImageView loading ;
-    boolean image1;
     private View view;
     private LinearLayout myLayout;
-    private ArrayList<View> result;
-    int viewPosition;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        homeViewModel = ViewModelProviders.of(getActivity()).get(HomeViewModel.class);
-        homeViewModel.getText().observe(getActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-
-            }
-        });
 
         getDeals( "رعب");
         getDeals( "حب");
@@ -93,25 +74,8 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
         super.onResume();
         myLayout = view.findViewById(R.id.main);
         ButterKnife.bind(this , view);
-//        initLoading();
-        initRecyclerView();
 
-        result = new ArrayList<View>();
-
-        for (int i = 0; i < myLayout.getChildCount(); i++) {
-
-            ArrayList<View> viewArrayList = new ArrayList<View>();
-            View child = myLayout.getChildAt(i);
-            viewArrayList.add(child);
-            result.addAll(viewArrayList);
-        }
-
-        for (View view : result){
-            anmateView(view);
-        }
     }
-
-    private void anmateView(View view) { }
 
 
     private void addRecylerView(String title, List<Deal> list) {
@@ -136,39 +100,26 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
         recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity() , RecyclerView.HORIZONTAL , false));
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity() , 2, RecyclerView.HORIZONTAL , false ));
-         recyclerView.setAdapter(new ItemAdapter(getActivity() , list  , this));
+         recyclerView.setAdapter(new BookAdapter(getActivity() , list  , this));
         myLayout.addView(recyclerView);
 
     }
 
-    private void initRecyclerView() {
-        itemList = new ArrayList<>();
-        itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());
-        itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());
-        itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());
-        itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());itemList.add(new Item());
-    }
-
-    private void initLoading() {
-        loading = view.findViewById(R.id.loading);
-
-        final ScheduledThreadPoolExecutor executor_ = new ScheduledThreadPoolExecutor(1);
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                loading.setImageResource(image1 ? R.drawable.load1 : R.drawable.load2);
-                image1 = !image1 ;
-            }
-        };
-        executor_.scheduleWithFixedDelay(runnable, 0L, 400, TimeUnit.MILLISECONDS);
-
-        executor_.remove(runnable);
-        Log.d(TAG, "onCreateView: "+this.hashCode());
-    }
 
     @Override
-    public void onProductItemClicked(Deal item) {
+    public void onProductItemClicked(Deal deal) {
         Log.d(TAG, "onProductItemClicked: ");
-        loadFragment(BookDetailsFragment.newInstance(item.getBookName()));
+        loadFragment(BookDetailsFragment.newInstance(deal.getBookName() , deal));
+    }
+
+    public HomeFragment() {
+    }
+
+    public static HomeFragment newInstance() {
+        HomeFragment fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        args.putString(Constants.ARG_TITLE, "روايتي");
+        fragment.setArguments(args);
+        return fragment;
     }
 }

@@ -1,8 +1,8 @@
-package com.atp.rewayti.ui.base;
+package com.atp.rewayti.Base;
 
 import android.content.Context;
 
-import com.atp.rewayti.Main2Activity;
+import com.atp.rewayti.Base.Main2Activity;
 
 import androidx.fragment.app.Fragment;
 

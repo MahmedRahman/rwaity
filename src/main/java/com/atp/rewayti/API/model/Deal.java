@@ -3,7 +3,9 @@ package com.atp.rewayti.API.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Deal {
+import java.io.Serializable;
+
+public class Deal implements Serializable {
 
     @SerializedName("author")
     private String mAuthor;

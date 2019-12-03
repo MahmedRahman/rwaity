@@ -1,6 +1,7 @@
 package com.atp.rewayti.ui.home;
 
 import android.content.Context;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,27 +11,21 @@ import android.widget.TextView;
 
 import com.atp.rewayti.API.model.Deal;
 import com.atp.rewayti.R;
-import com.atp.rewayti.API.Item;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
-    private static final String TAG = "ItemAdapter";
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ItemViewHolder> {
+    private static final String TAG = "BookAdapter";
     List<Deal> itemList = new ArrayList<>();
     OnProductItemClicked onProductItemClicked ;
-    int[] images = {
-            R.drawable.cate1,
-            R.drawable.cate2
-    };
-    Random random = new Random();
-    public ItemAdapter(Context activity, List<Deal> itemList , OnProductItemClicked onProductItemClicked) {
+
+    public BookAdapter(Context activity, List<Deal> itemList , OnProductItemClicked onProductItemClicked) {
         this.itemList = itemList;
         this.onProductItemClicked = onProductItemClicked;
     }
@@ -38,7 +33,7 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_product_iem , parent , false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_book, parent , false);
         return new ItemViewHolder(view);
     }
 
@@ -49,7 +44,7 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
         Glide.with(holder.imageView).load(item.getBookImage()).into(holder.imageView);
 
         holder.title.setText(item.getBookName());
-        holder.description.setText(item.getDescription());
+        holder.description.setText(Html.fromHtml(item.getDescription()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
