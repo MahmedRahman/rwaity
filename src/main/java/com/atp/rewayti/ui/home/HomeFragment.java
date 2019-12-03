@@ -60,7 +60,7 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
 
         getDeals( "رعب");
         getDeals( "حب");
-//        getDeals( "رعب");
+        getDeals( "اثارة");
 
 
         return view;
@@ -95,11 +95,6 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
         ButterKnife.bind(this , view);
 //        initLoading();
         initRecyclerView();
-//        addRecylerView("ادوات منزلية" , itemList);
-//        addRecylerView("اجهزة كهربائية" , itemList);
-//        addRecylerView("مكياج وميك أب" , itemList);
-//        addRecylerView("ادوات منزلية" , itemList);
-//        addRecylerView("اجهزة كهربائية" , itemList);
 
         result = new ArrayList<View>();
 
@@ -174,6 +169,6 @@ public class HomeFragment extends BaseFragment implements ItemAdapter.OnProductI
     @Override
     public void onProductItemClicked(Deal item) {
         Log.d(TAG, "onProductItemClicked: ");
-        loadFragment(BookDetailsFragment.newInstance("نتائج البحث"));
+        loadFragment(BookDetailsFragment.newInstance(item.getBookName()));
     }
 }
